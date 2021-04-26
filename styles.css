@@ -80,6 +80,7 @@ body {
 .btn-text {
   font-size: 20px;
   font-weight: bold;
+  pointer-events: none;
 }
 
 .operator {
