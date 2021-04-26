@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calculator</title>
+    <script src="https://kit.fontawesome.com/167dfe41be.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -13,31 +14,37 @@
     <div class="btn-container">
       <div class="row">
         <div id="clear" class="size-2 btn misc"><span class="btn-text">AC</span></div>
-        <div id="toggle-neg" class="btn misc"><span class="btn-text">+/-</span></div>
-        <div id="divide" class="btn operator"><span class="btn-text">%</span></div>
+        <div id="toggle-neg" class="btn misc">
+          <span class="fa-layers fa-fw btn-text">
+            <i class="fas fa-plus" data-fa-transform="shrink-3 up-5 left-8"></i>
+            <i class="fas fa-slash" data-fa-transform="rotate--90 shrink-3 right-1"></i>
+            <i class="fas fa-minus" data-fa-transform="shrink-3 down-7 right-8"></i>
+          </span>
+        </div>
+        <div id="divide" class="btn operator"><span class="btn-text"><i class="fas fa-divide"></i></span></div>
       </div>
       <div class="row">
         <div id="7" class="btn number"><span class="btn-text">7</span></div>
         <div id="8" class="btn number"><span class="btn-text">8</span></div>
         <div id="9" class="btn number"><span class="btn-text">9</span></div>
-        <div id="multiply" class="btn operator"><span class="btn-text">x</span></div>
+        <div id="multiply" class="btn operator"><span class="btn-text"><i class="fas fa-times"></i></span></div>
       </div>
       <div class="row">
         <div id="4" class="btn number"><span class="btn-text">4</span></div>
         <div id="5" class="btn number"><span class="btn-text">5</span></div>
         <div id="6" class="btn number"><span class="btn-text">6</span></div>
-        <div id="subtract" class="btn operator"><span class="btn-text">-</span></div>
+        <div id="subtract" class="btn operator"><span class="btn-text"><i class="fas fa-minus"></i></span></div>
       </div>
       <div class="row">
         <div id="1" class="btn number"><span class="btn-text">1</span></div>
         <div id="2" class="btn number"><span class="btn-text">2</span></div>
         <div id="3" class="btn number"><span class="btn-text">3</span></div>
-        <div id="add" class="btn operator"><span class="btn-text">+</span></div>
+        <div id="add" class="btn operator"><span class="btn-text"><i class="fas fa-plus"></i></span></div>
       </div>
       <div class="row">
         <div id="decimal" class="btn number"><span class="btn-text">.</span></div>
         <div id="0" class="btn number"><span class="btn-text">0</span></div>
-        <div id="equal" class="size-2 btn operator"><span class="btn-text">=</span></div>
+        <div id="equal" class="size-2 btn operator"><span class="btn-text"><i class="fas fa-equals"></i></span></div>
       </div>
     </div>
   </div>

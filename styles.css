@@ -61,7 +61,7 @@ body {
   width: 75px;
   height: 75px;
   padding: 1rem;
-  margin: 0.4rem;
+  margin: 8px;
 
   border: 3px solid #001e1d;
   border-radius: 50%;
@@ -72,7 +72,7 @@ body {
 }
 
 .size-2 {
-  width: 160px;
+  width: 165px;
   height: 75px;
   border-radius: 75px;
 }
