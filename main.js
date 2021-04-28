@@ -63,7 +63,12 @@ decimal.addEventListener('click', () => {
 
 // Functions
 function updateDisplay() {
-  display.firstElementChild.innerText = displayValue;
+  displayValue = `${displayValue}`;
+  if (displayValue.length > 8) {
+    display.firstElementChild.innerText = Number.parseFloat(displayValue).toExponential(2);
+  } else {
+    display.firstElementChild.innerText = displayValue;
+  }
 }
 
 function clearAll() {
