@@ -1,53 +1,84 @@
-let displayValue = 0;
+// Variables
+let firstNumber = '0',
+    displayValue = '0',
+    operator = null;
+
 const display = document.querySelector('.display');
+const numbers = document.querySelectorAll('.number');
+const operators = document.querySelectorAll('.operator');
+const clearBtn = document.querySelector('#clear');
+const toggleNegative = document.querySelector('#toggle-neg');
+const decimal = document.querySelector('#decimal');
+
+
+// Set display value to 0 on load
 updateDisplay();
 
-let lastNumber,
-    nextNumber,
-    operator;
-
-const numbers = document.querySelectorAll('.number');
+// Event Listeners
 numbers.forEach((numberBtn) => {
   numberBtn.addEventListener('click', (e) => {
     const number = e.target.innerText;
-    if (!operator) {
-      displayValue += `${number}`;
-      displayValue = +displayValue;
-      updateDisplay();
+    if (displayValue === '0') {
+      displayValue = number;
     } else {
-      displayValue = 0;
-      displayValue += `${number}`;
-      displayValue = +displayValue;
-      updateDisplay();
+      displayValue += number;
     }
+    updateDisplay();
   });
 });
 
-const operators = document.querySelectorAll('.operator');
 operators.forEach((operatorBtn) => {
   operatorBtn.addEventListener('click', (e) => {
     if (e.target.attributes['id'].value !== 'equal') {
-      lastNumber = displayValue;
+      if (operator) {
+        equate();
+      }
+      firstNumber = displayValue;
       operator = e.target.attributes['id'].value;
+
+      displayValue = '0';
     } else {
-      nextNumber = displayValue;
-      displayValue = operate(operator, lastNumber, nextNumber);
-      updateDisplay();
+      equate();
+      operator = null;
     }
   });
 });
 
-const clearBtn = document.querySelector('#clear');
-clearBtn.addEventListener('click', () => {
-  lastNumber = 0;
-  nextNumber = 0;
-  operator = "";
-  displayValue = 0;
+clearBtn.addEventListener('click', clearAll);
+
+toggleNegative.addEventListener('click', () => {
+  displayValue = -displayValue;
   updateDisplay();
 });
 
+decimal.addEventListener('click', () => {
+  if (!displayValue.includes('.')) {
+    displayValue += '.';
+    updateDisplay();
+  }
+});
+
+
+// Functions
 function updateDisplay() {
   display.firstElementChild.innerText = displayValue;
+}
+
+function clearAll() {
+  firstNumber = '0';
+  displayValue = '0';
+  operator = null;
+  updateDisplay();
+}
+
+function equate() {
+  if (operator == 'divide' && +displayValue == 0) {
+    alert("Dividing by zero is always Infinity..don't try to break my calculator!!")
+    clearAll();
+  } else {
+    displayValue = operate(operator, +firstNumber, +displayValue);
+    updateDisplay();
+  }
 }
 
 function operate(operator, num1, num2) {
@@ -64,7 +95,7 @@ function operate(operator, num1, num2) {
     case 'divide':
       return divide(num1, num2);
       break;
-  } 
+  }
 }
 
 function add(a, b) {
