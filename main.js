@@ -18,12 +18,14 @@ updateDisplay();
 numbers.forEach((numberBtn) => {
   numberBtn.addEventListener('click', (e) => {
     const number = e.target.innerText;
-    if (displayValue === '0') {
-      displayValue = number;
-    } else {
-      displayValue += number;
+    if (displayValue.length < 8) {
+      if (displayValue === '0') {
+        displayValue = number;
+      } else {
+        displayValue += number;
+      }
+      updateDisplay();
     }
-    updateDisplay();
   });
 });
 
@@ -76,9 +78,13 @@ function equate() {
     alert("Dividing by zero is always Infinity..don't try to break my calculator!!")
     clearAll();
   } else {
-    displayValue = operate(operator, +firstNumber, +displayValue);
+    displayValue = roundResult(operate(operator, +firstNumber, +displayValue));
     updateDisplay();
   }
+}
+
+function roundResult(number) {
+  return Math.round(number * 1000) / 1000;
 }
 
 function operate(operator, num1, num2) {
